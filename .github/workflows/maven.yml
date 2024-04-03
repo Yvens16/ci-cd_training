@@ -38,3 +38,12 @@ jobs:
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+  
+  deploy:
+   needs: build
+   runs-on: [ci-cd-training]
+   steps:
+    - name: Pull image from docker hub
+      run: docker pull yvens/ci_cd_training:latest
+    - name: Run docker container
+      run: docker run -d -p 8080:8080
