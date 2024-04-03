@@ -45,5 +45,7 @@ jobs:
    steps:
     - name: Pull image from docker hub
       run: docker pull yvens/ci_cd_training:latest
+    - name: Delete old container
+      run: docker rm -f ci_cd_training-container
     - name: Run docker container
-      run: docker run -d -p 8080:8080
+      run: docker run -d -p 8080:8080 --name ci_cd_training-container yvens/ci_cd_training
