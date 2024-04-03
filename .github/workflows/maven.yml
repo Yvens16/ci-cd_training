@@ -44,8 +44,8 @@ jobs:
     steps:
       - name: Pull image from docker hub
       # Install docker on the ec2 virtualle machine:https://docs.docker.com/engine/install/ubuntu/
-        run: docker pull yvens/ci_cd_training:latest
+        run: sudo docker pull yvens/ci_cd_training:latest
       - name: Delete old container
-        run: docker rm -f ci_cd_training-container
+        run: sudo docker rm -f ci_cd_training-container
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name ci_cd_training-container yvens/ci_cd_training
+        run: sudo docker run -d -p 8080:8080 --name ci_cd_training-container yvens/ci_cd_training
