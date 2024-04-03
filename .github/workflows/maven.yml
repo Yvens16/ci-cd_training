@@ -41,7 +41,7 @@ jobs:
   
   deploy:
    needs: build
-   runs-on: [ci-cd-training]
+   runs-on: [self-hosted, ci-cd-training]
    steps:
     - name: Pull image from docker hub
       run: docker pull yvens/ci_cd_training:latest
