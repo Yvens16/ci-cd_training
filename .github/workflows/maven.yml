@@ -16,9 +16,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -40,12 +38,12 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
   
   deploy:
-   needs: build
-   runs-on: [self-hosted, ci-cd-training]
-   steps:
-    - name: Pull image from docker hub
-      run: docker pull yvens/ci_cd_training:latest
-    - name: Delete old container
-      run: docker rm -f ci_cd_training-container
-    - name: Run docker container
-      run: docker run -d -p 8080:8080 --name ci_cd_training-container yvens/ci_cd_training
+    needs: build
+    runs-on: [self-hosted, ci-cd-training]
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull yvens/ci_cd_training:latest
+      - name: Delete old container
+        run: docker rm -f ci_cd_training-container
+      - name: Run docker container
+        run: docker run -d -p 8080:8080 --name ci_cd_training-container yvens/ci_cd_training
