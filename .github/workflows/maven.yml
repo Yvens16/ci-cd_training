@@ -39,9 +39,11 @@ jobs:
   
   deploy:
     needs: build
+    # https://docs.github.com/fr/actions/hosting-your-own-runners/managing-self-hosted-runners/using-self-hosted-runners-in-a-workflow
     runs-on: [self-hosted, ci-cd-training]
     steps:
       - name: Pull image from docker hub
+      # Install docker on the ec2 virtualle machine:https://docs.docker.com/engine/install/ubuntu/
         run: docker pull yvens/ci_cd_training:latest
       - name: Delete old container
         run: docker rm -f ci_cd_training-container
