@@ -49,3 +49,4 @@ jobs:
         run: sudo docker rm -f ci_cd_training-container
       - name: Run docker container
         run: sudo docker run -d -p 8080:8080 --name ci_cd_training-container yvens/ci_cd_training
+      
